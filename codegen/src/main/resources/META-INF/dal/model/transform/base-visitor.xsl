@@ -62,12 +62,18 @@
                <xsl:choose>
                   <xsl:when test="@list='true'">
                      <xsl:value-of select="$empty"/>      for (<xsl:value-of select="$current/@entity-class"/><xsl:value-of select="$space"/><xsl:value-of select="@local-name-element"/> : <xsl:value-of select="$entity/@param-name"/>.<xsl:value-of select="@get-method"/>()) {<xsl:value-of select="$empty-line"/>
-                     <xsl:value-of select="$empty"/>         <xsl:value-of select="'         '"/><xsl:value-of select="$current/@visit-method"/>(<xsl:value-of select="@local-name-element"/>);<xsl:value-of select="$empty-line"/>
+                     <xsl:value-of select="$empty"/>         <xsl:value-of select="'         '"/> if(<xsl:value-of select="@local-name-element"/> != null) {<xsl:value-of select="$empty-line"/>
+                     <xsl:value-of select="$empty"/>         <xsl:value-of select="'         	'"/><xsl:value-of select="$current/@visit-method"/>(<xsl:value-of select="@local-name-element"/>);<xsl:value-of select="$empty-line"/>
+                     <xsl:value-of select="$empty"/>   }
                      <xsl:value-of select="$empty"/>      }<xsl:value-of select="$empty-line"/>
                   </xsl:when>
                   <xsl:when test="@map='true'">
-                     <xsl:value-of select="$empty"/>      for (<xsl:value-of select="$current/@entity-class"/><xsl:value-of select="$space"/><xsl:value-of select="@local-name-element"/> : <xsl:value-of select="$entity/@param-name"/>.<xsl:value-of select="@get-method"/>().values()) {<xsl:value-of select="$empty-line"/>
-                     <xsl:value-of select="$empty"/>         <xsl:value-of select="'         '"/><xsl:value-of select="$current/@visit-method"/>(<xsl:value-of select="@local-name-element"/>);<xsl:value-of select="$empty-line"/>
+                  	<xsl:value-of select="$empty"/> 	if(<xsl:value-of select="$entity/@param-name"/> != null <xsl:value-of select="$space"/><xsl:value-of select="'&amp;&amp;'" disable-output-escaping="yes"/><xsl:value-of select="$space"/>  <xsl:value-of select="$entity/@param-name"/>.<xsl:value-of select="@get-method"/>() != null <xsl:value-of select="$space"/><xsl:value-of select="'&amp;&amp;'" disable-output-escaping="yes"/> <xsl:value-of select="$space"/> <xsl:value-of select="$entity/@param-name"/>.<xsl:value-of select="@get-method"/>().values() != null) {<xsl:value-of select="$empty-line"/>
+                     <xsl:value-of select="$empty"/> <xsl:value-of select="'	'"/>      for (<xsl:value-of select="$current/@entity-class"/><xsl:value-of select="$space"/><xsl:value-of select="@local-name-element"/> : <xsl:value-of select="$entity/@param-name"/>.<xsl:value-of select="@get-method"/>().values()) {<xsl:value-of select="$empty-line"/>
+                     <xsl:value-of select="$empty"/>         <xsl:value-of select="'         '"/> if(<xsl:value-of select="@local-name-element"/> != null) {<xsl:value-of select="$empty-line"/>
+                     <xsl:value-of select="$empty"/>  <xsl:value-of select="'		'"/>        <xsl:value-of select="'         '"/><xsl:value-of select="$current/@visit-method"/>(<xsl:value-of select="@local-name-element"/>);<xsl:value-of select="$empty-line"/>
+                      <xsl:value-of select="$empty"/>      	 <xsl:value-of select="'         '"/>}
+                     <xsl:value-of select="$empty"/>  }<xsl:value-of select="$empty-line"/>
                      <xsl:value-of select="$empty"/>      }<xsl:value-of select="$empty-line"/>
                   </xsl:when>
                   <xsl:otherwise>
